@@ -1,5 +1,75 @@
 ---
 import '../styles/global.css';
+
+// ── SEO VARIABLES ─────────────────────────────
+const SITE_URL    = "https://valdemar-studio.com";
+const SITE_NAME   = "Valdemar Studio";
+const TITLE       = "Valdemar Studio · Marketing Digital para Salud y Fitness en Mexicali";
+const DESCRIPTION = "Gerente de marketing digital especializado en marcas de salud y bienestar en Mexicali. Redes sociales, sitio web, Google Maps, Rappi y contenido audiovisual profesional.";
+const OG_IMAGE    = `${SITE_URL}/og-image.png`;
+const KEYWORDS    = "marketing digital Mexicali, redes sociales salud, contenido audiovisual fitness, Google Maps negocio local, Go Pharmacy, agencia marketing Mexicali, Valdemar Studio";
+
+// ── JSON-LD STRUCTURED DATA ────────────────────
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Valdemar",
+  "jobTitle": "Gerente de Marketing Digital",
+  "description": DESCRIPTION,
+  "url": SITE_URL,
+  "image": `${SITE_URL}/logo.png`,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mexicali",
+    "addressRegion": "Baja California",
+    "addressCountry": "MX"
+  },
+  "sameAs": [
+    "https://instagram.com/soy.valdemar97",
+    "https://youtube.com/@soy.valdemar97",
+    "https://tiktok.com/@soy.valdemar97",
+    "https://facebook.com/soy.valdemar97"
+  ],
+  "knowsAbout": ["Marketing Digital", "Redes Sociales", "SEO", "Producción Audiovisual", "Google Business"]
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": SITE_NAME,
+  "description": DESCRIPTION,
+  "url": SITE_URL,
+  "logo": `${SITE_URL}/logo.png`,
+  "image": `${SITE_URL}/logo.png`,
+  "telephone": "+526861493655",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mexicali",
+    "addressRegion": "Baja California",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 32.6245,
+    "longitude": -115.4523
+  },
+  "areaServed": "Mexicali",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de Marketing Digital",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de Redes Sociales" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño y Desarrollo Web" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google My Business" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Producción Audiovisual" } }
+    ]
+  },
+  "sameAs": [
+    "https://instagram.com/soy.valdemar97",
+    "https://youtube.com/@soy.valdemar97",
+    "https://tiktok.com/@soy.valdemar97"
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -7,20 +77,61 @@ import '../styles/global.css';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valdemar Studio · Marketing Digital para marcas de salud y fitness</title>
-  <meta name="description" content="Gerente de marketing digital especializado en salud y bienestar en Mexicali. Manejo de redes sociales, sitio web, Google Maps, Rappi y más." />
+
+  <!-- ── SEO BÁSICO ─────────────────────────── -->
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <meta name="keywords" content={KEYWORDS} />
+  <meta name="author" content="Valdemar Studio" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={SITE_URL} />
+
+  <!-- ── OPEN GRAPH (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={SITE_URL} />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+  <meta property="og:image" content={OG_IMAGE} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content={SITE_NAME} />
+
+  <!-- ── TWITTER CARD ───────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={TITLE} />
+  <meta name="twitter:description" content={DESCRIPTION} />
+  <meta name="twitter:image" content={OG_IMAGE} />
+
+  <!-- ── FAVICON + PWA ─────────────────────── -->
   <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <meta name="theme-color" content="#0D0D0D" />
+
+  <!-- ── GEO LOCAL (SEO local Mexicali) ──────── -->
+  <meta name="geo.region" content="MX-BCN" />
+  <meta name="geo.placename" content="Mexicali" />
+  <meta name="geo.position" content="32.6245;-115.4523" />
+  <meta name="ICBM" content="32.6245, -115.4523" />
+
+  <!-- ── STRUCTURED DATA JSON-LD ──────────── -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- ── PERFORMANCE ────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="format-detection" content="telephone=yes" />
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
     <div class="container">
-      <a href="#" class="logo">
-        <img src="/logo.png" alt="Valdemar Studio" class="logo-img" />
+      <a href="/" class="logo" aria-label="Valdemar Studio - Inicio">
+        <img src="/logo.png" alt="Valdemar Studio logo" class="logo-img" width="40" height="40" />
         <span class="logo-text">Valdemar<span class="accent">.</span>Studio</span>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" role="navigation" aria-label="Menú principal">
         <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#aliados">Aliados</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -30,122 +141,124 @@ import '../styles/global.css';
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <img src="/logo.png" alt="Valdemar Studio" class="hero-logo" />
-      <h1>Marketing digital para marcas de <span class="accent">salud y bienestar</span></h1>
-      <p>Gerente de marketing digital especializado en el sector salud. Me encargo de todo: redes sociales, sitio web, Google Maps, Rappi y más — desde Mexicali.</p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn">Trabajemos juntos</a>
-        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOBRE MÍ -->
-  <section id="sobre-mi">
-    <div class="container">
-      <div class="about">
-        <div class="avatar-wrap reveal">
-          <div class="avatar">V</div>
-        </div>
-        <div class="about-content">
-          <span class="section-label reveal">Sobre mí</span>
-          <h2 class="reveal reveal-delay-1">Soy Valdemar</h2>
-          <p class="reveal reveal-delay-2">Gerente de marketing digital especializado en marcas del sector salud y bienestar. Me encargo de construir y escalar la presencia digital de cada cliente con una estrategia integral y resultados medibles.</p>
-          <p class="reveal reveal-delay-3">Trabajo desde Mexicali gestionando desde cero el ecosistema digital de marcas locales: sus redes sociales, su reputación en Google, su presencia en plataformas de delivery y su comunicación con clientes.</p>
+  <main>
+    <section class="hero" aria-label="Presentación">
+      <div class="container">
+        <img src="/logo.png" alt="Valdemar Studio" class="hero-logo" width="140" height="140" />
+        <h1>Marketing digital para marcas de <span class="accent">salud y fitness</span></h1>
+        <p>Gerente de marketing digital especializado en el sector salud. Me encargo de todo: redes sociales, sitio web, Google Maps, Rappi y más — desde Mexicali.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn">Trabajemos juntos</a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ALIADOS -->
-  <section id="aliados">
-    <div class="container">
-      <span class="section-label reveal">Aliado estratégico</span>
-      <h2 class="reveal reveal-delay-1">La marca que confía en mi trabajo</h2>
-      <p class="reveal reveal-delay-2">Gestiono de forma integral el ecosistema digital de Go Pharmacy, una farmacia local con visión de crecimiento.</p>
-
-      <div class="ally-featured reveal reveal-delay-3">
-        <div class="ally-featured-logo">
-          <img src="/go-pharmacy.png" alt="Go Pharmacy" />
-        </div>
-        <div class="ally-featured-content">
-          <span class="ally-badge">Farmacia · Mexicali</span>
-          <h3>Go Pharmacy</h3>
-          <p>Farmacia local con enfoque en salud preventiva y atención personalizada. Me encargo de todo su ecosistema digital para conectarlos con más clientes en Mexicali.</p>
-          <div class="ally-roles">
-            <span class="ally-role">Marketing Digital</span>
-            <span class="ally-role">Redes Sociales</span>
-            <span class="ally-role">Sitio Web</span>
-            <span class="ally-role">Google Maps</span>
-            <span class="ally-role">Rappi</span>
-            <span class="ally-role">Contenido Audiovisual</span>
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" aria-labelledby="titulo-sobre-mi">
+      <div class="container">
+        <div class="about">
+          <div class="avatar-wrap reveal">
+            <div class="avatar" aria-hidden="true">V</div>
+          </div>
+          <div class="about-content">
+            <span class="section-label reveal">Sobre mí</span>
+            <h2 id="titulo-sobre-mi" class="reveal reveal-delay-1">Soy Valdemar</h2>
+            <p class="reveal reveal-delay-2">Gerente de marketing digital especializado en marcas del sector salud y bienestar. Me encargo de construir y escalar la presencia digital de cada cliente con una estrategia integral y resultados medibles.</p>
+            <p class="reveal reveal-delay-3">Trabajo desde Mexicali gestionando desde cero el ecosistema digital de marcas locales: sus redes sociales, su reputación en Google, su presencia en plataformas de delivery y su comunicación con clientes.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <div class="container">
-      <span class="section-label reveal">Servicios</span>
-      <h2 class="reveal reveal-delay-1">Gestión digital integral</h2>
-      <p class="reveal reveal-delay-2">Me encargo de todo el ecosistema digital de tu marca, de principio a fin.</p>
-      <div class="services-grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">📱</div>
-          <h3>Redes Sociales</h3>
-          <p>Gestión y crecimiento de Instagram, TikTok, Facebook y YouTube con contenido audiovisual profesional.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">🌐</div>
-          <h3>Sitio Web</h3>
-          <p>Diseño, desarrollo y mantenimiento de sitios web optimizados para convertir visitantes en clientes.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon">📍</div>
-          <h3>Google Maps</h3>
-          <p>Optimización de perfil de Google Business, reputación y posicionamiento local.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-4">
-          <div class="service-icon">🛵</div>
-          <h3>Rappi & Delivery</h3>
-          <p>Gestión de cuenta en plataformas de delivery para maximizar ventas y visibilidad.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">🎥</div>
-          <h3>Producción Audiovisual</h3>
-          <p>Grabación, edición y publicación de contenido en video con equipo 4K profesional.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">📊</div>
-          <h3>Métricas & Reportes</h3>
-          <p>Seguimiento de resultados, análisis de datos y reportes mensuales de cada plataforma.</p>
+    <!-- ALIADOS -->
+    <section id="aliados" aria-labelledby="titulo-aliados">
+      <div class="container">
+        <span class="section-label reveal">Aliado estratégico</span>
+        <h2 id="titulo-aliados" class="reveal reveal-delay-1">La marca que confía en mi trabajo</h2>
+        <p class="reveal reveal-delay-2">Gestiono de forma integral el ecosistema digital de Go Pharmacy, una farmacia local con visión de crecimiento.</p>
+        <div class="ally-featured reveal reveal-delay-3">
+          <div class="ally-featured-logo">
+            <img src="/go-pharmacy.png" alt="Logo de Go Pharmacy - Farmacia en Mexicali" width="200" height="200" loading="lazy" />
+          </div>
+          <div class="ally-featured-content">
+            <span class="ally-badge">Farmacia · Mexicali</span>
+            <h3>Go Pharmacy</h3>
+            <p>Farmacia local con enfoque en salud preventiva y atención personalizada. Me encargo de todo su ecosistema digital para conectarlos con más clientes en Mexicali.</p>
+            <div class="ally-roles">
+              <span class="ally-role">Marketing Digital</span>
+              <span class="ally-role">Redes Sociales</span>
+              <span class="ally-role">Sitio Web</span>
+              <span class="ally-role">Google Maps</span>
+              <span class="ally-role">Rappi</span>
+              <span class="ally-role">Contenido Audiovisual</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="contact">
-    <div class="container">
-      <span class="section-label reveal">Contacto</span>
-      <h2 class="reveal reveal-delay-1">Hablemos de tu marca</h2>
-      <p class="reveal reveal-delay-2">Si tu negocio pertenece al sector salud o bienestar y quieres llevar tu presencia digital al siguiente nivel, escríbeme.</p>
-      <div class="social-links reveal reveal-delay-3">
-        <a href="https://instagram.com/soy.valdemar97" class="social-link" target="_blank" rel="noopener">📷 Instagram</a>
-        <a href="https://youtube.com/@soy.valdemar97" class="social-link" target="_blank" rel="noopener">▶️ YouTube</a>
-        <a href="https://tiktok.com/@soy.valdemar97" class="social-link" target="_blank" rel="noopener">🎵 TikTok</a>
-        <a href="https://facebook.com/soy.valdemar97" class="social-link" target="_blank" rel="noopener">👥 Facebook</a>
+    <!-- SERVICIOS -->
+    <section id="servicios" aria-labelledby="titulo-servicios">
+      <div class="container">
+        <span class="section-label reveal">Servicios</span>
+        <h2 id="titulo-servicios" class="reveal reveal-delay-1">Gestión digital integral</h2>
+        <p class="reveal reveal-delay-2">Me encargo de todo el ecosistema digital de tu marca, de principio a fin.</p>
+        <div class="services-grid">
+          <article class="service-card reveal reveal-delay-1">
+            <div class="service-icon" aria-hidden="true">📱</div>
+            <h3>Redes Sociales</h3>
+            <p>Gestión y crecimiento de Instagram, TikTok, Facebook y YouTube.</p>
+          </article>
+          <article class="service-card reveal reveal-delay-2">
+            <div class="service-icon" aria-hidden="true">🌐</div>
+            <h3>Sitio Web</h3>
+            <p>Diseño, desarrollo y mantenimiento de sitios web optimizados.</p>
+          </article>
+          <article class="service-card reveal reveal-delay-3">
+            <div class="service-icon" aria-hidden="true">📍</div>
+            <h3>Google Maps</h3>
+            <p>Optimización de perfil de Google Business, reputación y posicionamiento local.</p>
+          </article>
+          <article class="service-card reveal reveal-delay-4">
+            <div class="service-icon" aria-hidden="true">🛵</div>
+            <h3>Rappi & Delivery</h3>
+            <p>Gestión de cuenta en plataformas de delivery para maximizar ventas.</p>
+          </article>
+          <article class="service-card reveal reveal-delay-1">
+            <div class="service-icon" aria-hidden="true">🎥</div>
+            <h3>Producción Audiovisual</h3>
+            <p>Grabación, edición y publicación de contenido en video con equipo 4K.</p>
+          </article>
+          <article class="service-card reveal reveal-delay-2">
+            <div class="service-icon" aria-hidden="true">📊</div>
+            <h3>Métricas & Reportes</h3>
+            <p>Seguimiento de resultados, análisis de datos y reportes mensuales.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact" aria-labelledby="titulo-contacto">
+      <div class="container">
+        <span class="section-label reveal">Contacto</span>
+        <h2 id="titulo-contacto" class="reveal reveal-delay-1">Hablemos de tu marca</h2>
+        <p class="reveal reveal-delay-2">Si tu negocio pertenece al sector salud o bienestar y quieres llevar tu presencia digital al siguiente nivel, escríbeme.</p>
+        <div class="social-links reveal reveal-delay-3">
+          <a href="https://wa.me/526861493655" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">📲 WhatsApp</a>
+          <a href="https://instagram.com/soy.valdemar97" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Valdemar Studio">📷 Instagram</a>
+          <a href="https://youtube.com/@soy.valdemar97" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Canal de YouTube de Valdemar Studio">▶️ YouTube</a>
+          <a href="https://tiktok.com/@soy.valdemar97" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Valdemar Studio">🎵 TikTok</a>
+          <a href="https://facebook.com/soy.valdemar97" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Valdemar Studio">👥 Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="container">
-      © 2026 Valdemar<span class="accent">.</span>Studio · Mexicali, México
+      © 2026 Valdemar<span class="accent">.</span>Studio · Mexicali, Baja California, México
     </div>
   </footer>
 
@@ -158,11 +271,7 @@ import '../styles/global.css';
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
