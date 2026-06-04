@@ -1,0 +1,38 @@
+{
+  "servicios": [
+    {
+      "id": "redes-sociales",
+      "nombre": "Redes Sociales",
+      "titulo": "Gestión de Redes Sociales | Valde-Studio",
+      "descripcion": "Gestión estratégica de Instagram, TikTok, Facebook y YouTube. Contenido creativo, crecimiento orgánico y resultados medibles para marcas de salud y fitness.",
+      "emoji": "📱",
+      "heroTitle": "<span class=\"accent\">Redes Sociales</span> que generan movimiento",
+      "benefits": [
+        { "icon": "📈", "title": "Crecimiento Orgánico", "desc": "Aumento de seguidores y engagement sin publicidad pagada." },
+        { "icon": "✨", "title": "Contenido Profesional", "desc": "Posts diseñados, escritos y publicados con estrategia." },
+        { "icon": "⏰", "title": "Tiempo Liberado", "desc": "Yo me encargo de todo. Tú enfócate en tu negocio." },
+        { "icon": "📊", "title": "Analítica Clara", "desc": "Reportes mensuales con métricas que importan." },
+        { "icon": "💬", "title": "Comunidad Activa", "desc": "Construimos una comunidad real alrededor de tu marca." },
+        { "icon": "🎯", "title": "Estrategia Personalizada", "desc": "Plan adaptado a tu sector y metas." }
+      ],
+      "planes": [
+        {
+          "nombre": "Pack Básico",
+          "precio": "$400/mes",
+          "features": ["8 posts al mes", "1 plataforma", "Respuesta a comentarios", "Reporte básico"]
+        },
+        {
+          "nombre": "Pack Profesional",
+          "precio": "$700/mes",
+          "features": ["16 posts al mes", "3 plataformas", "Community management 24/7", "Reporte detallado"],
+          "popular": true
+        },
+        {
+          "nombre": "Pack Premium",
+          "precio": "$1000/mes",
+          "features": ["20 posts + 4 reels", "Todas las plataformas", "Contenido video", "Reunión estratégica"]
+        }
+      ]
+    }
+  ]
+}
