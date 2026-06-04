@@ -1,0 +1,146 @@
+---
+import servicios from '../../data/servicios.json';
+import '../../styles/global.css';
+import '../../styles/enhancements.css';
+
+export async function getStaticPaths() {
+  return servicios.servicios.map((servicio) => ({
+    params: { id: servicio.id },
+    props: { servicio },
+  }));
+}
+
+interface Props {
+  servicio: typeof servicios.servicios[0];
+}
+
+const { servicio } = Astro.props;
+const TITLE = `${servicio.nombre} | Valde-Studio`;
+const DESCRIPTION = servicio.descripcion;
+const EMOJI = '✨';
+const BENEFICIOS = [
+  { icon: '💰', title: 'ROI Claro', desc: 'Resultados medibles desde el primer mes' },
+  { icon: '⚡', title: 'Rápido', desc: 'Implementación ágil y resultados inmediatos' },
+  { icon: '🎯', title: 'Personalizado', desc: 'Adaptado a tu negocio y sector' },
+  { icon: '📊', title: 'Data-Driven', desc: 'Decisiones basadas en análisis y métricas' },
+  { icon: '🔄', title: 'Escalable', desc: 'Crece con tu negocio sin límites' },
+  { icon: '🤝', title: 'Soporte 24/7', desc: 'Estoy aquí cuando me necesitas' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href={`https://valdemar-studio.com/servicios/${servicio.id}`} />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+  <meta property="og:image" content="https://valdemar-studio.com/og-image.png" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7TSEMJF0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L7TSEMJF0S');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Valdemar Studio" class="logo-img" width="40" height="40" />
+      <span class="logo-text">Valdemar<span class="accent">.</span>Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/#aliados">Casos</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1><span class="accent">{servicio.nombre}</span> para tu marca</h1>
+      <p>{servicio.descripcion}</p>
+      <div class="hero-actions">
+        <a href={`https://wa.me/526861493655?text=Quiero%20conocer%20más%20sobre%20${servicio.nombre}`} class="btn">Contactar ahora</a>
+        <a href="/#servicios" class="btn btn-outline">Volver</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="section-label">Beneficios</span>
+      <h2>¿Por qué elegir este servicio?</h2>
+      
+      <div class="services-grid">
+        {BENEFICIOS.map((ben) => (
+          <div class="service-card">
+            <div class="service-icon">{ben.icon}</div>
+            <h3>{ben.title}</h3>
+            <p>{ben.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="section-label">Inversión</span>
+      <h2>Planes y precios</h2>
+      
+      <div class="services-grid">
+        {servicio.plans.map((plan) => (
+          <div class="service-card" style={plan.popular ? "border: 2px solid var(--color-accent);" : "border: 1px solid var(--color-border);"}>
+            {plan.popular && (
+              <div style="position: absolute; top: -12px; right: 20px; background: var(--color-accent); color: var(--color-bg); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">POPULAR</div>
+            )}
+            <h3 style="color: var(--color-accent);">{plan.name}</h3>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-accent); margin: 1rem 0;">{plan.price}</div>
+            <a href={`https://wa.me/526861493655?text=Interesado%20en%20${plan.name}%20-%20${servicio.nombre}`} class="btn" style="width: 100%; text-align: center;">Solicitar</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>¿Listo para transformar tu {servicio.nombre.toLowerCase()}?</h2>
+      <p>Cuéntame sobre tu negocio. Haré un diagnóstico y te propondré la solución perfecta.</p>
+      <a href={`https://wa.me/526861493655?text=Quiero%20información%20sobre%20${servicio.nombre}`} class="btn" style="margin-top: 1.5rem;">Enviar WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Valdemar<span class="accent">.</span>Studio · Mexicali, Baja California
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
