@@ -4,7 +4,7 @@
 export const ANALYTICS_CONFIG = {
   // Google Analytics 4 ID
   // Obtén tu ID en: https://analytics.google.com/
-  GOOGLE_ANALYTICS_ID: 'G-XXXXXXXXXX', // Reemplazar con tu GA ID
+  GOOGLE_ANALYTICS_ID: 'G-L7TSEMJF0S', // Reemplazar con tu GA ID
   
   // Hotjar (opcional - para heatmaps)
   HOTJAR_ID: null,
