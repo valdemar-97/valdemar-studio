@@ -251,6 +251,52 @@ const localBusinessSchema = {
     <!-- CONTACTO -->
     <!-- CONTACT FORM -->
     <section id="contacto" class="contact" aria-labelledby="titulo-contacto">
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <section style="padding: 6rem 0; border-bottom: 1px solid var(--color-border); background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-hover) 100%);">
+      <div class="container">
+        <span class="section-label reveal">Contacto Directo</span>
+        <h2 class="reveal reveal-delay-1">Envíame tu información</h2>
+        <p class="reveal reveal-delay-2">Llena el formulario y te responderé en 24 horas</p>
+        
+        <form action="https://formspree.io/f/xojvjwba" method="POST" class="reveal reveal-delay-3" style="max-width: 600px; margin: 3rem auto; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 14px; padding: 2rem;">
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text);">Nombre *</label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); font-family: inherit;">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text);">Email *</label>
+            <input type="email" name="email" placeholder="tu@email.com" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); font-family: inherit;">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text);">Teléfono</label>
+            <input type="tel" name="telefono" placeholder="+52 686 123 4567" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); font-family: inherit;">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text);">¿Qué servicio te interesa? *</label>
+            <select name="servicio" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); font-family: inherit;">
+              <option value="">-- Selecciona --</option>
+              <option value="Redes Sociales">Redes Sociales</option>
+              <option value="Sitio Web">Sitio Web</option>
+              <option value="Google Maps">Google Maps</option>
+              <option value="Rappi & Delivery">Rappi & Delivery</option>
+              <option value="Producción Audiovisual">Producción Audiovisual</option>
+              <option value="Métricas & Reportes">Métricas & Reportes</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-text);">Tu mensaje *</label>
+            <textarea name="mensaje" placeholder="Cuéntame tu reto..." required rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); font-family: inherit; resize: vertical;"></textarea>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; text-align: center;">Enviar Solicitud</button>
+        </form>
+      </div>
+    </section>
       <div class="container">
         <span class="section-label reveal">Contacto</span>
         <h2 id="titulo-contacto" class="reveal reveal-delay-1">Hablemos de tu marca</h2>
