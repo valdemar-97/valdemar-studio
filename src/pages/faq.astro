@@ -1,0 +1,143 @@
+---
+import '../styles/global.css';
+import '../styles/enhancements.css';
+
+const TITLE = "Preguntas Frecuentes | Valde-Studio";
+const DESCRIPTION = "Respuestas a preguntas sobre marketing digital, redes sociales, SEO y más.";
+
+const faqs = [
+  {
+    q: "¿Cuánto tiempo tarda en ver resultados?",
+    a: "Los resultados varían por servicio. En redes sociales ves engagement en 2-4 semanas. En Google Maps, 4-6 semanas. En SEO, 3-6 meses. Lo importante es la estrategia correcta desde el inicio."
+  },
+  {
+    q: "¿Puedo cancelar en cualquier momento?",
+    a: "Sí. Trabajamos sin contratos a largo plazo. Si no estás satisfecho, podemos terminar la relación sin penalidades."
+  },
+  {
+    q: "¿Qué incluye el paquete de redes sociales?",
+    a: "Depende del plan. Básico: 8 posts/mes + respuestas. Profesional: 16 posts + 3 plataformas + analytics. Premium: 20 posts + videos + asesoría estratégica."
+  },
+  {
+    q: "¿Usas herramientas gratuitas o pagas?",
+    a: "Combinamos ambas. Herramientas gratuitas cuando son suficientes, herramientas premium cuando agreguen valor real. El costo está incluido en el servicio."
+  },
+  {
+    q: "¿Cómo reportan los resultados?",
+    a: "Reportes mensuales claros con: métricas, tendencias, análisis, y recomendaciones. Todo explicado en español, sin tecnicismos innecesarios."
+  },
+  {
+    q: "¿Trabajan con empresas de cualquier tamaño?",
+    a: "Sí. Desde pequeños negocios locales hasta empresas grandes. Adaptamos la estrategia a tu presupuesto y objetivos."
+  },
+  {
+    q: "¿Garantizan posición #1 en Google?",
+    a: "No. Nadie puede garantizar posición en Google. Lo que sí garantizamos es estrategia ética, mejoras continuas y transparencia en resultados."
+  },
+  {
+    q: "¿Cuál es el costo mínimo?",
+    a: "Depende del servicio. Lo más accesible es Google Maps (desde $200/mes) o Métricas (desde $150/mes). Consulta sin compromiso."
+  },
+  {
+    q: "¿Puedo cambiar de servicio después?",
+    a: "Claro. Muchos clientes empiezan con un servicio y agregan otros después. Es flexible."
+  },
+  {
+    q: "¿Qué diferencia hay contigo vs agencias grandes?",
+    a: "Atención personalizada. No eres un número. Tomas decisiones rápido, comunicación directa, sin intermediarios. Y precios justos sin márgenes excesivos."
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href="https://valdemar-studio.com/faq" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7TSEMJF0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L7TSEMJF0S');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Valdemar Studio" class="logo-img" width="40" height="40" />
+      <span class="logo-text">Valdemar<span class="accent">.</span>Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" style="padding: 8rem 0 4rem;">
+    <div class="container">
+      <h1><span class="accent">Preguntas</span> Frecuentes</h1>
+      <p>Respuestas claras a tus dudas sobre marketing digital y nuestros servicios</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto;">
+        {faqs.map((faq, index) => (
+          <details style="margin-bottom: 1.5rem; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;">
+            <summary style="font-weight: 600; font-size: 1.1rem; color: var(--color-text); display: flex; justify-content: space-between; align-items: center; user-select: none;">
+              {faq.q}
+              <span style="color: var(--color-accent); margin-left: 1rem;">▼</span>
+            </summary>
+            <p style="margin-top: 1rem; color: var(--color-text-muted); line-height: 1.7;">
+              {faq.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-hover) 100%);">
+    <div class="container" style="text-align: center;">
+      <h2>¿No encontraste tu respuesta?</h2>
+      <p style="margin-bottom: 2rem;">Contáctame directamente, respondo en 24 horas</p>
+      <a href="https://wa.me/526861493655" class="btn">Enviar WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Valdemar<span class="accent">.</span>Studio · Mexicali, Baja California
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

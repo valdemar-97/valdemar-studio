@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+import '../styles/enhancements.css';
+
+const TITLE = "Blog | Valde-Studio";
+const DESCRIPTION = "Tips y guías sobre marketing digital, redes sociales, SEO y crecimiento empresarial.";
+
+const articulos = [
+  {
+    id: "5-errores-redes-sociales",
+    titulo: "5 Errores Comunes en Redes Sociales que Alejan Clientes",
+    resumen: "Los errores que cometen empresas en redes sociales y cómo evitarlos.",
+    fecha: "2026-06-04",
+    categoria: "Redes Sociales",
+    imagen: "📱"
+  },
+  {
+    id: "google-maps-negocios-locales",
+    titulo: "Cómo Dominar Google Maps para tu Negocio Local",
+    resumen: "Estrategia completa para posicionamiento en Google Maps y atraer clientes locales.",
+    fecha: "2026-06-03",
+    categoria: "Google Maps",
+    imagen: "📍"
+  },
+  {
+    id: "email-marketing-guia",
+    titulo: "Email Marketing: Guía Completa para Principiantes",
+    resumen: "Construye una lista de emails y vende más con email marketing efectivo.",
+    fecha: "2026-06-02",
+    categoria: "Email Marketing",
+    imagen: "💌"
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href="https://valdemar-studio.com/blog" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7TSEMJF0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L7TSEMJF0S');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Valdemar Studio" class="logo-img" width="40" height="40" />
+      <span class="logo-text">Valdemar<span class="accent">.</span>Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/faq">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" style="padding: 8rem 0 4rem;">
+    <div class="container">
+      <h1><span class="accent">Blog</span> de Marketing Digital</h1>
+      <p>Tips, estrategias y guías para hacer crecer tu negocio</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        {articulos.map((art) => (
+          <article style="border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; cursor: pointer;">
+            <a href={`/blog/${art.id}`} style="text-decoration: none; color: inherit; display: block; height: 100%; transition: transform 0.3s ease; hover: {transform: translateY(-4px)};">
+              <div style="background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-hover) 100%); padding: 2rem; text-align: center; font-size: 3rem;">
+                {art.imagen}
+              </div>
+              <div style="padding: 1.5rem;">
+                <div style="color: var(--color-accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem;">
+                  {art.categoria}
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--color-text);">
+                  {art.titulo}
+                </h3>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                  {art.resumen}
+                </p>
+                <div style="color: var(--color-text-subtle); font-size: 0.85rem;">
+                  {new Date(art.fecha).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-hover) 100%);">
+    <div class="container" style="text-align: center;">
+      <h2>Suscríbete a nuestro Blog</h2>
+      <p style="margin-bottom: 2rem;">Recibe los últimos artículos sobre marketing digital en tu email</p>
+      <form action="https://formspree.io/f/xojvjwba" method="POST" style="max-width: 400px; margin: 0 auto; display: flex; gap: 1rem;">
+        <input type="email" name="email" placeholder="tu@email.com" required style="flex: 1; padding: 0.9rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-bg); color: var(--color-text);">
+        <button type="submit" class="btn">Suscribir</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Valdemar<span class="accent">.</span>Studio · Mexicali, Baja California
+  </div>
+</footer>
+
+</body>
+</html>
